@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Componente</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'tabla/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<a class="btn btn-info"  href="{% url 'componente:componente-crear' %}">Añadir Componente</a>
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+								Ubicacion Componente
+							</div>
+							<div class="cell">
+								Nombre Componente
+							</div>
+							<div class="cell">
+								Identificador Componente
+							</div>
+							<div class="cell">
+								Descripcion Componente
+							</div>
+							<div class="cell">
+								Acciones
+							</div>
+						</div>
+							{% if object_list %}
+							{% for componente in object_list %}
+						<tr>
+						<div class="row">
+							<div class="cell" data-title="Ubicacion Componente">
+								{{componente.ambiente}}
+							</div>
+							<div class="cell" data-title="Nombre Componente">
+								{{componente.nombre_componente}}
+							</div>
+							<div class="cell" data-title="Identificador Componente">
+								{{componente.identificador}}
+							</div>
+							<div class="cell" data-title="Descripcion Componenete">
+								{{componente.descripcion}}
+							</div>
+							<div>
+								<a class="btn btn-primary"  href="{% url 'componente:componente-actualizar' componente.pk %}">Actualizar</a>
+								<a class="btn btn-danger"  href="{% url 'componente:componente-eliminar' componente.pk %}">Eliminar</a>
+							</div>
+						</div>
+							{% endfor %}
+							{% else %}
+						<h1>
+							No hay Componentes disponbles
+						</h1>
+							{% endif %}
+						</tr>
+					</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{% static 'tabla/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'tabla/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'tabla/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'tabla/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'tabla/js/main.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Ambiente</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'tabla/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'tabla/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<a class="btn btn-info"  href="{% url 'ambiente:ambiente-crear' %}">Añadir Ambiente</a>
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+								Id
+							</div>
+							<div class="cell">
+								Nombre Ambiente
+							</div>
+							<div class="cell">
+								Acciones
+							</div>
+						</div>
+							{% if object_list %}
+							{% for ambiente in object_list %}
+						<tr>
+						<div class="row">
+							<div class="cell" data-title="Id Ambiente">
+								{{ambiente.id}}
+							</div>
+							<div class="cell" data-title="Nombre Ambiente">
+								{{ambiente.nombre_ambiente}}
+							</div>
+							<div>
+								<a class="btn btn-primary"  href="{% url 'ambiente:ambiente-actualizar' ambiente.pk %}">Actualizar</a>
+								<a class="btn btn-danger"  href="{% url 'ambiente:ambiente-eliminar' ambiente.pk %}">Eliminar</a>
+							</div>
+						</div>
+							{% endfor %}
+							{% else %}
+						<h1>
+							No hay Ambientes disponbles
+						</h1>
+							{% endif %}
+						</tr>
+					</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{% static 'tabla/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'tabla/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'tabla/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'tabla/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'tabla/js/main.js' %}"></script>
+
+</body>
+</html>
